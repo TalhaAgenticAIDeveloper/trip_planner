@@ -25,13 +25,6 @@ origin = st.text_input("From where will you be traveling?")
 cities = st.text_area("What are the cities you’re interested in visiting?")
 date_range = st.text_input("What is the date range for your trip?")
 interests = st.text_area("List your high-level interests and hobbies.")
-# submitted = st.form_submit_button("Plan My Trip")
-
-
-
-############################################################################################
-# Creating Agents and Tasks
-############################################################################################
 
 
 agents = TripAgents()
@@ -63,9 +56,6 @@ plan_task = tasks.plan_task(
             interests,
             date_range
         )
-############################################################################################
-# Creating Crew
-############################################################################################
 
 crew = Crew(
             agents=[city_selector_agent, local_expert_agent, travel_concierge_agent],
@@ -73,11 +63,6 @@ crew = Crew(
             verbose=True
         )
 
-
-# def save_output_to_markdown(output, filename="agent_output.md"):
-#     """Saves the output in a structured Markdown file."""
-#     with open(filename, "w", encoding="utf-8") as file:
-#         file.write(output.replace("**", ""))
 
 if st.button("Submit"):
     with st.spinner("Processing... Please wait"):
